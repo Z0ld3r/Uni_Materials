@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+void change() {
+	char c;
+	scanf("%c", &c);
+	if (c>= 'a' && <= 'z') {
+		c -= 32;
+	}
+	else if (c>= 'A' && c<='Z') {
+		c += 32
+	}
+	else {
+		printf("%c is not a lower or uppercase letter",c)
+	}
+	printf("c: %c\n",c)
+}
+
+int main() {
+	
+
+
+	return 0;
+}

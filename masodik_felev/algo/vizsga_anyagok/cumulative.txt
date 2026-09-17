@@ -1,0 +1,19 @@
+-C2L insertion
+-S1L merge
+
+
+
+
+Array:
+- QS
+- Bucket (abstract)
+- Counting 
+- Merge
+- Heap
+
+
++
+- TransparentQ stuki
+- Binaris fa bejarasok
+- BT insert + sort
+- BT delroot

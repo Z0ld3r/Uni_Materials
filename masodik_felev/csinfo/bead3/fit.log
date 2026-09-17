@@ -1,0 +1,96 @@
+
+
+*******************************************************************************
+Tue May 19 17:59:50 2026
+
+
+FIT:    data read from 'hd21686.dat' using 1:2
+        format = x:z
+        x range restricted to [665.000 : 680.000]
+        #datapoints = 2795
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x + b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.7010910394e+13   0.00e+00  4.76e+02    1.000000e+00   1.000000e+00
+   7 7.4107709886e+08  -6.31e-06  4.76e-05   -2.726937e+02   2.620625e+05
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 7.41077e+08
+rel. change during last iteration : -6.31123e-11
+
+degrees of freedom    (FIT_NDF)                        : 2793
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 515.106
+variance of residuals (reduced chisquare) = WSSR/ndf   : 265334
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = -272.694         +/- 2.242        (0.8221%)
+b               = 262063           +/- 1508         (0.5753%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -1.000  1.000 
+
+
+*******************************************************************************
+Tue May 19 18:14:32 2026
+
+
+FIT:    data read from 'hd21686.dat' using 1:2
+        format = x:z
+        x range restricted to [651.270 : 661.270]
+        #datapoints = 1901
+        residuals are weighted equally (unit weight)
+
+function used for fitting: G(x)
+	G(x) = b * exp(-((x - mu)**2) / (2 * sigma**2)) + C
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   b             mu            sigma         C            
+   0 1.0796161374e+13   0.00e+00  1.91e+03   -2.000000e+01   6.562700e+02   1.000000e+00   1.000000e+02
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Tue May 19 18:17:06 2026
+
+
+FIT:    data read from 'hd21686.dat' using 1:2
+        format = x:z
+        x range restricted to [651.270 : 661.270]
+        #datapoints = 1901
+        residuals are weighted equally (unit weight)
+
+function used for fitting: G(x)
+	G(x) = b * exp(-((x - mu)**2) / (2 * sigma**2)) + C
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   b             mu            sigma         C            
+   0 1.9642219794e+12   0.00e+00  4.11e+06    4.300000e+04   6.562700e+02   1.000000e+00   8.500000e+04
+  10 6.8261102214e+09   0.00e+00  4.11e+12   -3.110827e+04   6.567832e+02   8.813745e-01   8.166921e+04
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 6.82611e+09
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 1897
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1896.94
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.59837e+06
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+b               = -31108.3         +/- 153          (0.4918%)
+mu              = 656.783          +/- 0.005011     (0.000763%)
+sigma           = 0.881375         +/- 0.005252     (0.5959%)
+C               = 81669.2          +/- 59.94        (0.07339%)
+
+correlation matrix of the fit parameters:
+                b      mu     sigma  C      
+b               1.000 
+mu             -0.392  1.000 
+sigma           0.415 -0.303  1.000 
+C              -0.283  0.014  0.453  1.000 
