@@ -1,0 +1,8 @@
+Be: a∈N, b∈N
+Ki: m∈L
+Ef: b != 0
+Uf: ((a mod b = 0)->m=true) or ((a mod b ≠ 0)->m=false)
+
+
+bekér a és b számokat, 
+majd ellenőrzi a szám b-vel való oszthatóságát

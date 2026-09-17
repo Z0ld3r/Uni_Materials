@@ -1,0 +1,20 @@
+predetermined
+4 10 4
+Peter 10000 moho
+Kata 10000 ovatos
+Gabor 10000 taktikus
+Zsofia 10000 moho
+property
+luckytile 2000
+property
+unluckytile 1000
+property
+property
+unluckytile 8000
+property
+luckytile 5000
+unluckytile 6000
+1 1 2 3
+6 2 4 4
+6 5 2 3
+3 1 1 1
