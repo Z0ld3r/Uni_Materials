@@ -1,0 +1,5 @@
+M:\uni\masodik_felev\OEP\gyak\gyak\obj\Debug\net8.0\gyak.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\gyak\gyak\obj\Debug\net8.0\gyak.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\gyak\gyak\obj\Debug\net8.0\gyak.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\gyak\gyak\obj\Debug\net8.0\gyak.csproj.CoreCompileInputs.cache
+M:\uni\masodik_felev\OEP\gyak\gyak\obj\Debug\net8.0\gyak.csproj.AssemblyReference.cache

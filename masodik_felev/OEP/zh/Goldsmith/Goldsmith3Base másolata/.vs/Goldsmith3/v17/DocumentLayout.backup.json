@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|d:\\uni\\2\\oep\\_kodzh\\_megoldott\\goldsmith\\goldsmith3base\\goldsmith\\jewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\jewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|d:\\uni\\2\\oep\\_kodzh\\_megoldott\\goldsmith\\goldsmith3base\\goldsmith\\workshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\workshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|d:\\uni\\2\\oep\\_kodzh\\_megoldott\\goldsmith\\goldsmith3base\\goldsmith\\goldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\goldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|d:\\uni\\2\\oep\\_kodzh\\_megoldott\\goldsmith\\goldsmith3base\\goldsmith\\ruby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\ruby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Jewelry.cs",
+              "DocumentMoniker": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Jewelry.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Jewelry.cs",
+              "ToolTip": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Jewelry.cs",
+              "RelativeToolTip": "Goldsmith\\Jewelry.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAswEUAAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T01:42:38.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Goldsmith.cs",
+              "DocumentMoniker": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Goldsmith.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Goldsmith.cs",
+              "ToolTip": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Goldsmith.cs",
+              "RelativeToolTip": "Goldsmith\\Goldsmith.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDgAAABoAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T01:40:32.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Ruby.cs",
+              "DocumentMoniker": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Ruby.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Ruby.cs",
+              "ToolTip": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Ruby.cs",
+              "RelativeToolTip": "Goldsmith\\Ruby.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T01:32:38.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Workshop.cs",
+              "DocumentMoniker": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Workshop.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Workshop.cs",
+              "ToolTip": "D:\\Uni\\2\\OEP\\_kodzh\\_megoldott\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Workshop.cs",
+              "RelativeToolTip": "Goldsmith\\Workshop.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAwwGgAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T01:06:06.017Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+AGENT: Verselo Robot
+STEP
+Költő
+Írj egy négysoros verset a tavaszról.
+Légy kreatív és használj rímeket.
+STRING
+ENDSTEP
+STEP
+Ellenőr
+Ellenőrizd a rímeket az előző válaszban.
+Adj egy logikai igen/nem választ.
+BOOLEAN
+ENDSTEP

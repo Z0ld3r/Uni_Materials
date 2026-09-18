@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\gyak\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61F128F0-FFB8-493C-AE08-AFEE4DBD842A}|gyak\\gyak.csproj|m:\\uni\\masodik_felev\\oep\\gyak\\gyak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61F128F0-FFB8-493C-AE08-AFEE4DBD842A}|gyak\\gyak.csproj|solutionrelative:gyak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AA9D53-5836-492E-9403-E1BA5E643A55}|test1\\test1.csproj|m:\\uni\\masodik_felev\\oep\\gyak\\test1\\painter3test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AA9D53-5836-492E-9403-E1BA5E643A55}|test1\\test1.csproj|solutionrelative:test1\\painter3test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61F128F0-FFB8-493C-AE08-AFEE4DBD842A}|gyak\\gyak.csproj|m:\\uni\\masodik_felev\\oep\\gyak\\gyak\\paintertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61F128F0-FFB8-493C-AE08-AFEE4DBD842A}|gyak\\gyak.csproj|solutionrelative:gyak\\paintertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PainterTest.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\gyak\\gyak\\PainterTest.cs",
+              "RelativeDocumentMoniker": "gyak\\PainterTest.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\gyak\\gyak\\PainterTest.cs",
+              "RelativeToolTip": "gyak\\PainterTest.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwDEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T14:58:21.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\gyak\\gyak\\Program.cs",
+              "RelativeDocumentMoniker": "gyak\\Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\gyak\\gyak\\Program.cs",
+              "RelativeToolTip": "gyak\\Program.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAqwGQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T14:48:04.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Painter3Test.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\gyak\\test1\\Painter3Test.cs",
+              "RelativeDocumentMoniker": "test1\\Painter3Test.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\gyak\\test1\\Painter3Test.cs",
+              "RelativeToolTip": "test1\\Painter3Test.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T14:41:33.348Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

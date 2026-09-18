@@ -1,0 +1,11 @@
+M:\uni\masodik_felev\OEP\gyak\test1\bin\Debug\net8.0\.msCoverageSourceRootsMapping_test1
+M:\uni\masodik_felev\OEP\gyak\test1\bin\Debug\net8.0\.msCoverageExtensionSourceRootsMapping_test1
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.csproj.AssemblyReference.cache
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.csproj.CoreCompileInputs.cache
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.gentestingplatformentrypointinputcache.cache
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\test1.genautoregisteredextensionsinputcache.cache
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\AutoRegisteredExtensions.cs
+M:\uni\masodik_felev\OEP\gyak\test1\obj\Debug\net8.0\TestPlatformEntryPoint.cs

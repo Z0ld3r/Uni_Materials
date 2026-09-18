@@ -1,0 +1,15 @@
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\bead5.exe
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\bead5.deps.json
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\bead5.runtimeconfig.json
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\bead5.dll
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\bead5.pdb
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.GeneratedMSBuildEditorConfig.editorconfig
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.AssemblyInfoInputs.cache
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.AssemblyInfo.cs
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.csproj.CoreCompileInputs.cache
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.dll
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\refint\bead5.dll
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.pdb
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\bead5.genruntimeconfig.cache
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\obj\Debug\net8.0\ref\bead5.dll
+M:\OneDrive - Eotvos Lorand Tudomanyegyetem Informatikai Kar\bead5\bead5\bin\Debug\net8.0\input.txt

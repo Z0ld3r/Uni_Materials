@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\beadando\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6F170399-75DA-48BF-A05B-AE29142F543A}|beadando\\beadando.csproj|m:\\uni\\masodik_felev\\oep\\beadando\\beadando\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F170399-75DA-48BF-A05B-AE29142F543A}|beadando\\beadando.csproj|solutionrelative:beadando\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\beadando\\beadando\\Program.cs",
+              "RelativeDocumentMoniker": "beadando\\Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\beadando\\beadando\\Program.cs",
+              "RelativeToolTip": "beadando\\Program.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAA6wAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T18:40:13.528Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

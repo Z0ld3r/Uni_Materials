@@ -1,0 +1,12 @@
+﻿javac data/structure/MultiSet.java 
+
+./check.cmd data/structure/MultiSetStructureTest.java data.structure.MultiSetStructureTest
+./check.cmd data/structure/MultiSetTest.java data.structure.MultiSetTest
+./check.cmd data/structure/MultiSetSuite.java data.structure.MultiSetSuite
+
+
+
+javac data/organiser/Organiser.java 
+./check.cmd data/organiser/OrganiserStructureTest.java data.organiser.OrganiserStructureTest
+./check.cmd data/organiser/OrganiserTest.java data.organiser.OrganiserTest
+./check.cmd data/organiser/OrganiserSuite.java data.organiser.OrganiserSuite

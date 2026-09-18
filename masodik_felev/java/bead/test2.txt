@@ -1,0 +1,7 @@
+AGENT: Teszt Ágens
+STEP
+ElsoLepes
+Szia!
+Legy udvarias.
+STRING
+ENDSTEP

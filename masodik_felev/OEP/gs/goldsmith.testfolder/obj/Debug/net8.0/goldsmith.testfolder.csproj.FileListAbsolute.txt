@@ -1,0 +1,6 @@
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\bin\Debug\net8.0\CoverletSourceRootsMapping_goldsmith.testfolder
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\obj\Debug\net8.0\goldsmith.testfolder.csproj.AssemblyReference.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\obj\Debug\net8.0\goldsmith.testfolder.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\obj\Debug\net8.0\goldsmith.testfolder.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\obj\Debug\net8.0\goldsmith.testfolder.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.testfolder\obj\Debug\net8.0\goldsmith.testfolder.csproj.CoreCompileInputs.cache

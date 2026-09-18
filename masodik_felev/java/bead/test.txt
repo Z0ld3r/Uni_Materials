@@ -1,0 +1,7 @@
+AGENT: AGNES
+STEP
+name=stepping
+prompt=i_am_stepping
+systemPrompt=he_is_stepping
+output=INT
+ENDSTEP

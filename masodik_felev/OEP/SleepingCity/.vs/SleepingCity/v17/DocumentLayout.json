@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|m:\\uni\\masodik_felev\\oep\\sleepingcity\\sleepingcity\\jatekos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|solutionrelative:sleepingcity\\jatekos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|m:\\uni\\masodik_felev\\oep\\sleepingcity\\sleepingcity\\j\u00E1t\u00E9k.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|solutionrelative:sleepingcity\\j\u00E1t\u00E9k.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|m:\\uni\\masodik_felev\\oep\\sleepingcity\\sleepingcity\\kor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F23D863-B098-4142-93D8-253B32ED0815}|SleepingCity\\SleepingCity.csproj|solutionrelative:sleepingcity\\kor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Jatekos.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\Jatekos.cs",
+              "RelativeDocumentMoniker": "SleepingCity\\Jatekos.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\Jatekos.cs",
+              "RelativeToolTip": "SleepingCity\\Jatekos.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwFYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T07:37:34.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Kor.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\Kor.cs",
+              "RelativeDocumentMoniker": "SleepingCity\\Kor.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\Kor.cs",
+              "RelativeToolTip": "SleepingCity\\Kor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T07:35:37.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "J\u00E1t\u00E9k.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\J\u00E1t\u00E9k.cs",
+              "RelativeDocumentMoniker": "SleepingCity\\J\u00E1t\u00E9k.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\SleepingCity\\SleepingCity\\J\u00E1t\u00E9k.cs",
+              "RelativeToolTip": "SleepingCity\\J\u00E1t\u00E9k.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T07:31:57.629Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

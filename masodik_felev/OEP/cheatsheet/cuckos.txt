@@ -1,0 +1,453 @@
+OEP ZH Összefoglaló — UML → C#
+======================================================
+UML osztálydiagramok átültetése C#-ra: tervezési minták, programozási tételek és visszatérő konstrukciók egy oldalon.
+
+TARTALOMJEGYZÉK
+1. UML osztálydiagram
+   1.1 Láthatóság, módosítók
+   1.2 Asszociációk
+2. UML konstrukciók C#-ban
+   2.1 Mezők, property-k
+   2.2 Abstract, polimorfizmus
+   2.3 Kompozíció & kollekció
+   2.4 Kétirányú kapcsolat
+   2.5 Operátor, indexer, enum
+3. Tervezési minták
+   3.1 Template Method
+   3.2 Composite
+   3.3 Polimorf elágazás
+   3.4 Előfeltétel & kivétel
+4. Programozási tételek
+   4.1 Összegzés
+   4.2 Megszámlálás
+   4.3 Eldöntés
+   4.4 Maximumkeresés
+   4.5 Feltételes max/min
+   4.6 Részfeladat
+5. Bemenet feldolgozása
+   5.1 Alap fájlolvasás
+   5.2 Mintapélda: kurzus
+   5.3 Kérdések megválaszolása
+6. C# eszköztár
+   6.1 Property-k
+   6.2 Konstruktor láncolás
+   6.3 Kollekciók
+   6.4 LINQ
+   6.5 Hibakezelés
+7. Csapdák & checklist
+
+---
+
+01. UML OSZTÁLYDIAGRAM – JELÖLÉSEK
+
+1.1 Láthatóság és módosítók
+| Jel              | Jelentés                                        | C# megfelelő            |
+|------------------|-------------------------------------------------|-------------------------|
+| +                | public                                          | public                  |
+| #                | protected                                       | protected               |
+| -                | private                                         | private                 |
+| ~                | package / internal                              | internal                |
+| dőlt név         | absztrakt osztály vagy metódus                  | abstract                |
+| aláhúzott        | statikus tag / metódus                          | static                  |
+| {abstract}       | absztrakt metódus                               | abstract                |
+| {virtual}        | felüldefiniálható (alapért. implementáció van)  | virtual                 |
+| {override}       | felüldefiniálás örökléskor                      | override                |
+| {query}          | lekérdező metódus (állapotot nem változtat)     | (konvenció)             |
+| {getter}         | csak getter                                     | { get; }                |
+| {getter, setter} | olvasható-írható                                | { get; set; }           |
+| {unique}         | halmaz jellegű kapcsolat (nincs duplikátum)     | HashSet / ellenőrzés    |
+
+1.2 Asszociációk és kapcsolatok
+| UML jel         | Kapcsolat                  | Élettartam / felelősség                                   | C# megvalósítás                       |
+|-----------------|----------------------------|-----------------------------------------------------------|---------------------------------------|
+| ─────▷          | Öröklődés (általánosítás)  | leszármazott IS-A ős                                      | class B : A                           |
+| - - - -▷        | Interfész megvalósítás     | implements                                                | class A : IFoo                        |
+| ◆────           | Kompozíció (telt rombusz)  | rész élete a teljeshez kötött (létrehozza és birtokolja)  | konstruktorban new                    |
+| ◇────           | Aggregáció (üres rombusz)  | rész önállóan is létezhet, csak hivatkozást tárolunk      | konstruktor- / metódusparaméter       |
+| ────            | Egyszerű asszociáció       | tagváltozó / referencia                                   | private mező vagy property            |
+| * / 1..* / 0..1 | Multiplicitás              | hány elem lehet a kapcsolatban                            | lista / opcionális mező               |
+
+[MEGJEGYZÉS]: A kompozíció és aggregáció eldöntésének praktikus szabálya: ha a tartalmazó osztály konstruktorából indul a tagosztály létrehozása (azaz a paraméterben az adatokat kapjuk meg, nem kész objektumot), akkor kompozíció. Ha kívülről kapott, már létező objektumra mutató referenciát tárolunk, az aggregáció.
+
+---
+
+02. UML KONSTRUKCIÓK C#-BAN
+
+2.1 Osztály alapváz, mezők és tulajdonságok
+A védelmi szintek pontosan megfeleltethetők. A {getter} jelölés egy csak-olvasható propertyt takar, amit célszerű automatikus property-vel megvalósítani:
+
+class Starship {
+    // # name : string { getter }   →
+    public string Name { get; }            // csak getter, csak konstruktorból állítható
+    // # Shield : int               →
+    protected int Shield { get; set; }     // protected, mert leszármazott is használja
+    // - balance : int              →
+    private int balance;                   // teljesen rejtett mező
+
+    public Starship(string n, int sh) {
+        Name = n;          // a getter-only property konstruktorból kapja az értékét
+        Shield = sh;
+    }
+}
+
+2.2 Absztrakt osztály és metódus, polimorfizmus
+Az UML-ben dőlt betűs osztálynév és {abstract} metódus → C#-ban abstract. A leszármazottakban override kötelező. Ha az ősben van alapértelmezett megvalósítás, amit átírhatnak, az virtual → override.
+
+abstract class Starship {
+    public abstract int FireP();              // {abstract}
+    public virtual int Defense() => Shield;   // van alapért. impl., de felüldefiniálható
+}
+
+class Lasership : Starship {
+    public Lasership(string n, int sh, int ar, int g) : base(n, sh, ar, g) {}
+    public override int FireP() => Shield;    // {override} – kötelező
+}
+
+2.3 Kompozíció ⇄ kollekció (1-* kapcsolat)
+A leggyakoribb minta: egy osztály belül listát tart a hozzá tartozó alelemekből. Pl. Solarsystem * Planet, AmPark 2..* TargetShot, Folder * Registration.
+
+class Solarsystem {
+    private List<Planet> planets = new();          // - planets : Planet[*]
+
+    public void AddPlanet(Planet p) {
+        if (planets.Contains(p))                   // {unique} → duplikátum tiltás
+            throw new InvalidOperationException();
+        planets.Add(p);
+    }
+}
+
+2.4 Kétirányú kapcsolat (visszamutatás)
+Ha az UML-en mindkét végén van név (pl. protects / ships), akkor mindkét oldal tárolja a másikat. Az érvényesség fenntartása érdekében az egyik oldal metódusa hívja a másikat, és kerülni kell a végtelen rekurziót (általában lekérdezéssel ellenőrzünk):
+
+// Starship.Protect(p: Planet): if planet != null then error endif;
+//                              planet := p;  planet.ProtectedBy(this)
+public void Protect(Planet p) {
+    if (planet != null) throw new InvalidOperationException();
+    planet = p;
+    p.ProtectedBy(this);            // a másik oldal "vakon" csak hozzáad
+}
+
+// Planet.ProtectedBy(h: Starship): if h in ships then error endif; ships.Add(h)
+public void ProtectedBy(Starship h) {
+    if (ships.Contains(h)) throw new InvalidOperationException();
+    ships.Add(h);
+}
+
+2.5 Operátor túlterhelés, indexelő, enum, struct/record
+
+enum Content { EMPTY, WALL, GHOST, TREASURE }      // <<enumeration>>
+
+readonly record struct Position(int X, int Y) {     // <<record>> – értékszemantika
+    public Position operator +(Position a, Position b) =>
+        new Position(a.X + b.X, a.Y + b.Y);
+    public bool Inside(int l, int n, int k, int m) =>
+        l <= X && X <= n && k <= Y && Y <= m;
+}
+
+---
+
+03. VISSZATÉRŐ TERVEZÉSI MINTÁK
+
+3.1 Template Method – algoritmus váza + abstract lépés
+Az ősosztály implementálja az általános viselkedést (pl. Protect, Leave), miközben hagy egy absztrakt lépést (pl. FireP()), amit a leszármazottak töltenek ki. Tipikus a Starship-példa: minden hajó tud védeni és elhagyni egy bolygót, de a tűzerőt mindenki másképp számolja (armor/2, guard, Shield).
+
+abstract class Starship {
+    public void Leave() {                   // sablon-metódus: rögzített algoritmus
+        if (planet == null) throw new InvalidOperationException();
+        planet.LeftBy(this);
+        planet = null;
+    }
+    public abstract int FireP();            // változó lépés – leszármazott dönt
+}
+
+3.2 Composite – egyforma kezelés egyszerű és összetett elemekre
+Egy ős (pl. Registration) absztrakt műveletet ír elő (GetSize), amit a levél (File) közvetlenül, a konténer (Folder) pedig az alelemein végigiterálva valósít meg. Így a kliens (FileSystem) egységesen kezelheti.
+
+abstract class Registration {
+    public abstract int GetSize();
+}
+class File : Registration {
+    private int size;
+    public override int GetSize() => size;
+}
+class Folder : Registration {
+    private List<Registration> items = new();
+    public override int GetSize() {
+        int s = 0;                              // size + ∑ e.GetSize()
+        foreach (var e in items) s += e.GetSize();
+        return s;
+    }
+    public void Add(Registration r) => items.Add(r);
+    public void Remove(Registration r) => items.Remove(r);
+}
+
+3.3 Polimorf elágazás helyettesítése
+Ha switch-csel akarnánk típus szerint különböző viselkedést hívni, az általában polimorfizmussal oldható meg szebben: virtuális metódus, amit minden leszármazott felüldefiniál.
+
+// Rossz: if (s is Wallbreaker) ... else if (s is Lasership) ...
+// Jó:    s.FireP()    // virtuális/abstract metódus, mindenki tudja, mit ad vissza
+
+3.4 Egyedi szabály érvényesítése konstruktorban / setterben
+Az UML melléklapokon szereplő `if … then error endif` előfeltételek a C# kódban általában kivételt dobnak (throw new ArgumentException / InvalidOperationException). Ez biztosítja, hogy érvénytelen állapotú objektum sose jöjjön létre.
+
+// AmPark(c: TargetShot[]):   if |c| < 2 then error endif
+public AmPark(TargetShot[] c) {
+    if (c.Length < 2) throw new ArgumentException("Legalább 2 célzónra van szükség.");
+    targets = c;
+    guests  = new List<Guest>();
+}
+
+---
+
+04. PROGRAMOZÁSI TÉTELEK ÉS TIPIKUS RÉSZFELADATOK
+A tételek többnyire osztály metódusaként jelennek meg, ahol a metódus végigfut a saját kollekcióján (foreach) és az alelemek hasonló nevű metódusait hívja. Ez a delegálás szépen tükrözi az UML ∑, MAX, ⊕ kifejezéseit.
+
+4.1 Összegzés (Σ)
+// TotalShield(): real {query}    →   return ∑ e in ships e.Shield
+public double TotalShield() {
+    double sum = 0;
+    foreach (var s in ships) sum += s.Shield;
+    return sum;                    // (LINQ:  return ships.Sum(s => s.Shield);)
+}
+
+4.2 Megszámlálás
+// ShipCount(): int    →    return |ships|
+public int ShipCount() => ships.Count;
+
+4.3 Eldöntés (∃) és kiválogatás (⊕)
+// Defenseless(): return ⊕ e in planets <e>  e.ShipCount() = 0
+// "Van-e olyan bolygó, amelynek nincs hajója?" – az UML ⊕ valójában: gyűjtsük ki őket.
+public List<Planet> Defenseless() {
+    var result = new List<Planet>();
+    foreach (var p in planets)
+        if (p.ShipCount() == 0) result.Add(p);
+    return result;
+}
+
+4.4 Maximumkeresés (jellel együtt)
+// MaxFireP(): bool × int × Starship   →   return MAX e in ships e.FireP()
+public (bool found, int value, Starship ship) MaxFireP() {
+    if (ships.Count == 0) return (false, 0, null);
+    var best = ships[0];
+    int maxV = best.FireP();
+    for (int i = 1; i < ships.Count; i++) {
+        int v = ships[i].FireP();
+        if (v > maxV) { maxV = v; best = ships[i]; }
+    }
+    return (true, maxV, best);
+}
+
+4.5 Feltételes maximum / minimum (legnagyobb negatív, legkisebb pozitív)
+Ha nem biztos, hogy van megfelelő elem, két logikai flag-et viszünk magunkkal (lmax, lmin), és csak akkor írjuk felül az aktuális szélsőértéket, ha a feltétel teljesül és (még nincs érték vagy jobb a korábbinál).
+
+// Bemenet: egy számsorozat (e in x)
+bool lmax = false, lmin = false;
+int max = 0, min = 0;
+foreach (int e in x) {
+    if (e < 0 && (!lmax || e > max)) { max = e; lmax = true; }   // legnagyobb negatív
+    if (e > 0 && (!lmin || e < min)) { min = e; lmin = true; }   // legkisebb pozitív
+}
+
+4.6 Részfeladatok – kifejtett tétel (más tétel belsejéből hívott)
+Sok osztálymetódus kifejezhető egy másik metódus eredményeként, vagy egy belső segédmetódust hív. Pl. GetMax és RemMax mindketten egy közös MaxIndex-re támaszkodnak:
+
+private int MaxIndex() {                              // {query} – csak olvasás
+    if (seq.Count == 0) throw new InvalidOperationException();
+    int idx = 0;
+    for (int i = 1; i < seq.Count; i++)
+        if (seq[i].pr > seq[idx].pr) idx = i;
+    return idx;
+}
+public Item GetMax() => seq[MaxIndex()];               // csak lekérdez
+public Item RemMax() {                                 // lekérdez ÉS töröl
+    int i = MaxIndex();
+    var e = seq[i];
+    seq.RemoveAt(i);
+    return e;
+}
+
+---
+
+05. BEMENET FELDOLGOZÁSA: SZEKVENCIÁLIS INPUT FÁJL
+A ZH-ban szinte mindig egy szövegfájlból kell objektumokat felépíteni. Az állomány egy sorozat, amit egyszer olvasunk végig. Tipikus váz: az első sor a számosság, utána egy blokk minden elemenként, a blokk fejléce mondja meg, hány alelem következik.
+
+5.1 Alap fájlolvasás C#-ban
+using System.IO;
+
+string[] lines = File.ReadAllLines("input.txt");           // egyszerű, ha kicsi
+// vagy:
+using (var sr = new StreamReader("input.txt")) {
+    int n = int.Parse(sr.ReadLine());
+    for (int i = 0; i < n; i++) {
+        string[] head = sr.ReadLine().Split(
+            new[] {' ', '\t'}, StringSplitOptions.RemoveEmptyEntries);
+        string name = head[0];
+        int    count = int.Parse(head[1]);
+        for (int j = 0; j < count; j++) {
+            string[] parts = sr.ReadLine().Split(...);
+            // ... egy alelem felépítése
+        }
+    }
+}
+
+5.2 Mintapélda: kurzus → vizsga (Normal / Utó) → helyszínek
+Az input fájl szerkezetét egy állapotgépként érdemes olvasni: aktuális kurzus → annak vizsgái → azok helyszínei. Mindig azonnal hozzákötjük az új objektumot a szülőhöz.
+
+// 2                            ← kurzusok száma
+// Analizis 2                   ← név, vizsgák száma
+// N 22.05.22 Bolyai 0-826      ← típus, dátum, termek …
+// U 22.05.31 Mogyorodi Fejer
+// Programozas 1
+// N 22.05.20 Lovarda
+// Analizis                     ← kérdéses kurzus neve
+
+var kurzusok = new List<Kurzus>();
+int K = int.Parse(sr.ReadLine());
+for (int i = 0; i < K; i++) {
+    var head = sr.ReadLine().Split(new[]{' ','\t'}, StringSplitOptions.RemoveEmptyEntries);
+    var kurzus = new Kurzus(head[0]);
+    int VN = int.Parse(head[1]);
+    for (int j = 0; j < VN; j++) {
+        var v = sr.ReadLine().Split(new[]{' ','\t'}, StringSplitOptions.RemoveEmptyEntries);
+        Vizsga vizsga = v[0] == "N"
+            ? new Normal(v[1])
+            : new Uto(v[1]);
+        for (int k = 2; k < v.Length; k++)
+            vizsga.AddHelyszin(v[k]);
+        kurzus.AddVizsga(vizsga);
+    }
+    kurzusok.Add(kurzus);
+}
+string kerdes = sr.ReadLine().Trim();
+
+[MEGJEGYZÉS]: A bonyolultabb (jeles) változatban a vizsga maga is 1+n sort foglal el: a vizsga fejléce a helyszínszámot adja meg, és a következő n sor egy-egy helyszín adatait (terem, kapacitás, majd hallgatónevek listája). A minta marad ugyanaz: az aktuális vizsgát „megnyitjuk”, n alelemet beolvasunk, a végén „lezárjuk”.
+
+5.3 Kérdések megválaszolása az objektumhálón
+A kérdésekre választ adó metódusok a fent leírt tételekkel oldhatók meg: keresés (Find), eldöntés (van-e ilyen elem), maximumkeresés (legtöbb helyszín).
+
+// Van-e utóvizsga?
+public bool VanUtoVizsga() {
+    foreach (var v in vizsgak)
+        if (v is Uto) return true;
+    return false;
+}
+
+// Melyik vizsgát bonyolítják a legtöbb helyszínen?
+public Vizsga LegtobbHelyszinu() {
+    if (vizsgak.Count == 0) return null;
+    var best = vizsgak[0];
+    foreach (var v in vizsgak)
+        if (v.HelyszinSzam() > best.HelyszinSzam()) best = v;
+    return best;
+}
+
+Kimenet és hibás kérdés kezelése
+Külön figyelni a peremfeltételekre: nem létező kurzus → fix szöveg; létezik, de üres → más szöveg; rendben van → tényleges válasz. Ezt érdemes kétszintű if-fel írni, nem mindent a Main-be:
+
+var kurzus = kurzusok.FirstOrDefault(k => k.Nev == kerdes);
+if (kurzus == null)            Console.WriteLine("rossz kurzus");
+else if (kurzus.NincsVizsga()) Console.WriteLine("nincs");
+else {
+    var v = kurzus.LegtobbHelyszinu();
+    Console.WriteLine($"van {v.Datum}");
+}
+
+---
+
+06. HASZNOS C# NYELVI ESZKÖZÖK RÖVIDEN
+
+6.1 Tulajdonságok (property)
+public string Name { get; }                  // csak getter, csak init/konstruktor írhatja
+public int Shield { get; protected set; }    // kívülről csak olvasható
+public int Size { get; private set; }        // belül szabadon írjuk
+
+// Számolt property:
+public bool IsEmpty => seq.Count == 0;
+
+6.2 Konstruktor láncolás
+class Wallbreaker : Starship {
+    public Wallbreaker(string n, int sh, int ar, int g)
+        : base(n, sh, ar, g)              // ős konstruktora
+    { /* extra mezőket itt inicializálnánk */ }
+}
+
+6.3 Kollekciók – melyiket mikor?
+| UML                  | C# típus            | Mire jó                                                   |
+|----------------------|---------------------|-----------------------------------------------------------|
+| [ ] / List           | List<T>             | rendezett, indexelhető, leggyakoribb                      |
+| {unique}             | HashSet<T>          | halmaz, gyors tagsági teszt; vagy List + Contains         |
+| Dictionary<K,V>      | Dictionary<K,V>     | kulcs-érték (pl. Position → Content)                      |
+| * (sorrend lényeges) | List<T>             | ha az olvasási sorrend számít                             |
+| queue / stack        | Queue<T> / Stack<T> | FIFO / LIFO                                               |
+
+6.4 LINQ – tétel-kódok rövidítése (ha biztos vagy benne)
+ships.Count(s => s.Shield > 50);             // megszámlálás feltétellel
+ships.Any(s => s is Lasership);              // eldöntés (van-e ilyen)
+ships.Sum(s => s.Shield);                    // összegzés
+ships.Max(s => s.FireP());                   // maximum (érték)
+ships.OrderByDescending(s => s.FireP())      // legnagyobb tűzerejű
+     .First();
+ships.Where(s => s.Planet == null);          // szűrés
+
+[FIGYELEM]: A vizsgafeladatokban legtöbbször biztonságosabb a kézzel írt ciklus, mert üres kollekciónál a Max / First kivételt dob. Vagy ellenőrizz előtte, vagy használj kézi maximumkeresést jelzőbittel.
+
+6.5 Hibakezelés (kivételek)
+// UML:  if planet = null then error endif
+if (planet == null)
+    throw new InvalidOperationException("Nincs védett bolygó.");
+
+// Konstruktor előfeltétel:
+if (n < 0) throw new ArgumentException("n nem lehet negatív.", nameof(n));
+
+// Felhasználói szinten:
+try {
+    starship.Leave();
+} catch (InvalidOperationException e) {
+    Console.WriteLine($"Hiba: {e.Message}");
+}
+
+---
+
+07. GYAKORI CSAPDÁK ÉS ZH-ELLENŐRZŐLISTA
+
+Az osztálydiagramról a kódra
+* Minden mező láthatósági szintjét pontosan vidd át. Egy ellenőr külön nézi a # jelölést.
+* {getter} = property csak getterrel. Ne tedd public set-té csak mert kényelmes.
+* Az absztrakt metódusoknak NEM lehet törzse; a leszármazottnak override kötelező.
+* Ha az ős és a leszármazott konstruktorszignatúrája megegyezik, akkor is ki kell írni az utódnál és : base(...)-szal továbbadni.
+* Kétirányú kapcsolatnál a melyik oldal ellenőriz? kérdést mindig az UML melléklap dönti el – ne tegyél bele saját ellenőrzést, ha az UML nem mondja.
+* Az {unique} megszorítást kódban kell érvényesíteni (Contains + kivétel).
+
+A fájlbeolvasásnál
+* Split mindig StringSplitOptions.RemoveEmptyEntries opcióval, ha tabulátor és szóköz vegyesen szeparál.
+* A ReadLine() visszaadhat null-t a fájl végén – ne hivatkozz utána tagra.
+* A számokat int.Parse dobja, ha rossz formátumú – ZH-ban feltehetjük, hogy jó, de érdemes elgondolkodni rajta.
+* A vizsga / kurzus / hallgató objektumokat azonnal kösd be a szülő gyűjteményébe – ne hagyd lebegve.
+
+Általános higiénia
+* Egy .cs fájl, egy osztály (vagy logikailag egy egység). Ha külön fájlokat akarsz, ügyelj a namespace-re.
+* A Main minél rövidebb: beolvasás → kérdések → kiírás. A munkát az osztályok metódusai végzik.
+* Nullable referenciatípusoknál (string?) vagy kapcsold ki a nullable-t a csproj-ben, vagy figyelj a figyelmeztetésekre.
+* Tesztelj üres és egyelemes bemenetre is – a maximumkeresés és az összegzés ott szokott hibázni.
+
+Záró sablon – egy minimális Program.cs
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace ZH {
+    public class Program {
+        public static void Main() {
+            try {
+                using var sr = new StreamReader("input.txt");
+                // 1. Beolvasás → objektumháló felépítése
+                // 2. Kérdéses elem kikeresése
+                // 3. Kérdések megválaszolása + kiírás
+            } catch (FileNotFoundException) {
+                Console.WriteLine("Nincs input fájl.");
+            } catch (Exception e) {
+                Console.WriteLine($"Hiba: {e.Message}");
+            }
+        }
+    }
+}

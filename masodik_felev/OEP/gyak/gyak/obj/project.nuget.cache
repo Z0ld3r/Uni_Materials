@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qR2o6CW2NgI=",
+  "success": true,
+  "projectFilePath": "M:\\uni\\masodik_felev\\OEP\\gyak\\gyak\\gyak.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bened\\.nuget\\packages\\mstest.testframework\\3.6.4\\mstest.testframework.3.6.4.nupkg.sha512"
+  ],
+  "logs": []
+}

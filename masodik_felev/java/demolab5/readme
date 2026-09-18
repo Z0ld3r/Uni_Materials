@@ -1,0 +1,14 @@
+﻿Linux
+
+javac -cp ".:junit5all.jar" -d out hu/suli/text/TextStats.java 
+hu/suli/test/TextStatsTest.java
+java -jar junit5all.jar execute -cp out –scan-class-path
+
+
+PS
+
+javac -cp ".;junit5all.jar" -d out hu/suli/text/TextStats.java hu/suli/test/TextStatsTest.java
+Vagy
+javac -cp ".;junit5all.jar" -d out hu\suli\text\TextStats.java hu\suli\test\TextStatsTest.java
+
+java -jar junit5all.jar execute -cp out --scan-class-path

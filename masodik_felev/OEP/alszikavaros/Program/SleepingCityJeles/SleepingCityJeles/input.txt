@@ -1,0 +1,7 @@
+Bela Intro Polgar 4 
+Andris Intro Orvos 2 
+Anna Extro Gyilkos 3 Bela Andris 
+#
+Bela Extro Polgar 1 
+Milan Extro Orvos 2 
+Jakab Intro Gyilkos 3 Bela Andris 

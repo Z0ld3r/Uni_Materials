@@ -1,0 +1,4 @@
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith\obj\Debug\net8.0\goldsmith.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith\obj\Debug\net8.0\goldsmith.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith\obj\Debug\net8.0\goldsmith.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith\obj\Debug\net8.0\goldsmith.csproj.CoreCompileInputs.cache

@@ -1,0 +1,11 @@
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\bin\Debug\net8.0\Painters3.deps.json
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\bin\Debug\net8.0\Painters3.dll
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\bin\Debug\net8.0\Painters3.pdb
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.AssemblyInfoInputs.cache
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.AssemblyInfo.cs
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.csproj.CoreCompileInputs.cache
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.dll
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\refint\Painters3.dll
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\Painters3.pdb
+C:\Users\marto\OneDrive\Asztali gép\Programozás\OEP_OKT\ZH\Painters\PaintersBase\Painters3\obj\Debug\net8.0\ref\Painters3.dll

@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\lakatlansziget\\Island_3_Base\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{31CC341F-DBDA-4EAE-B798-A002855C98C5}|Island_3.csproj|m:\\uni\\masodik_felev\\oep\\lakatlansziget\\island_3_base\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31CC341F-DBDA-4EAE-B798-A002855C98C5}|Island_3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31CC341F-DBDA-4EAE-B798-A002855C98C5}|Island_3.csproj|m:\\uni\\masodik_felev\\oep\\lakatlansziget\\island_3_base\\island.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31CC341F-DBDA-4EAE-B798-A002855C98C5}|Island_3.csproj|solutionrelative:island.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Island.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\lakatlansziget\\Island_3_Base\\Island.cs",
+              "RelativeDocumentMoniker": "Island.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\lakatlansziget\\Island_3_Base\\Island.cs",
+              "RelativeToolTip": "Island.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T08:36:51.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\lakatlansziget\\Island_3_Base\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\lakatlansziget\\Island_3_Base\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T08:26:37.469Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

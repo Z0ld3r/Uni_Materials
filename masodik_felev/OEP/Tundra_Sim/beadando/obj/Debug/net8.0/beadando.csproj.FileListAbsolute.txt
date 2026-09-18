@@ -1,0 +1,14 @@
+M:\uni\masodik_felev\OEP\beadando\beadando\bin\Debug\net8.0\beadando.exe
+M:\uni\masodik_felev\OEP\beadando\beadando\bin\Debug\net8.0\beadando.deps.json
+M:\uni\masodik_felev\OEP\beadando\beadando\bin\Debug\net8.0\beadando.runtimeconfig.json
+M:\uni\masodik_felev\OEP\beadando\beadando\bin\Debug\net8.0\beadando.dll
+M:\uni\masodik_felev\OEP\beadando\beadando\bin\Debug\net8.0\beadando.pdb
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.csproj.CoreCompileInputs.cache
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.dll
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\refint\beadando.dll
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.pdb
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\beadando.genruntimeconfig.cache
+M:\uni\masodik_felev\OEP\beadando\beadando\obj\Debug\net8.0\ref\beadando.dll

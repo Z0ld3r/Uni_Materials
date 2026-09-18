@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OEP ZH összefoglaló — UML → C#</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ---- Téma ---- */
+  :root {
+    --bg:           #faf7f0;
+    --bg-soft:      #f1ece0;
+    --paper:        #ffffff;
+    --ink:          #1d1a16;
+    --ink-soft:     #4a463e;
+    --rule:         #d9d2c0;
+    --rule-soft:    #ece6d6;
+
+    --accent:       #b8442b;   /* meleg téglavörös */
+    --accent-soft:  #f5d9cf;
+    --primary:      #1d4a6b;   /* tinta-kék */
+    --primary-soft: #d6e5ef;
+
+    --code-bg:      #2b261f;
+    --code-ink:     #f5efe2;
+    --code-comment: #a39b86;
+    --code-key:     #d68a59;
+    --code-str:     #a8c47b;
+    --code-num:     #e6b86a;
+    --code-type:    #94c7d9;
+
+    --note-bg:      #fff6dc;
+    --note-rule:    #e3c87a;
+    --warn-bg:      #fce2d8;
+    --warn-rule:    #c66f4d;
+
+    --font-display: "Fraunces", "Times New Roman", serif;
+    --font-body:    "Inter Tight", system-ui, -apple-system, sans-serif;
+    --font-mono:    "JetBrains Mono", "Consolas", monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #18171a;
+    --bg-soft:      #221f23;
+    --paper:        #1f1c20;
+    --ink:          #ece6da;
+    --ink-soft:     #b3ac9d;
+    --rule:         #3a363b;
+    --rule-soft:    #2a272b;
+
+    --accent:       #e08560;
+    --accent-soft:  #3a2620;
+    --primary:      #7ec0e0;
+    --primary-soft: #1d2f3d;
+
+    --code-bg:      #100f12;
+    --code-ink:     #f5efe2;
+
+    --note-bg:      #2f2918;
+    --note-rule:    #74602b;
+    --warn-bg:      #2f1d18;
+    --warn-rule:    #8f4c33;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---- Decoratív papír háttér ---- */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
+    background-size: 4px 4px;
+    z-index: 0;
+  }
+
+  [data-theme="dark"] body::before { opacity: 0.4; }
+
+  /* ---- Layout ---- */
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Sidebar / TOC ---- */
+  aside.toc {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.25rem 2rem 1.5rem;
+    border-right: 1px solid var(--rule);
+    background: var(--bg-soft);
+    font-size: 0.86rem;
+  }
+
+  .toc h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .toc .subtitle {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: tocnum;
+  }
+
+  .toc > ol > li {
+    counter-increment: tocnum;
+    margin: 0.35rem 0;
+  }
+
+  .toc > ol > li > a {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    padding: 0.25rem 0.4rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .toc > ol > li > a::before {
+    content: counter(tocnum, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .toc > ol > li > a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .toc ul {
+    list-style: none;
+    padding: 0 0 0 1.5rem;
+    margin: 0.15rem 0 0 0;
+  }
+
+  .toc ul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding: 0.15rem 0.4rem;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    border-left: 1px solid var(--rule);
+    margin-left: -0.5rem;
+    padding-left: 0.75rem;
+  }
+
+  .toc ul li a:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  /* Téma kapcsoló */
+  .theme-toggle {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 99px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    font-size: 1rem;
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---- Main content ---- */
+  main {
+    padding: 2.75rem 3.5rem 5rem 3.5rem;
+    background: var(--paper);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ---- Header ---- */
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  header.hero .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  header.hero h1 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144;
+    font-weight: 800;
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.5rem 0;
+    color: var(--ink);
+  }
+
+  header.hero h1 .accent {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  header.hero .lead {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0.5rem 0 0 0;
+    line-height: 1.45;
+  }
+
+  header.hero .meta {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  header.hero .meta span::before {
+    content: "→ ";
+    color: var(--accent);
+  }
+
+  /* ---- Section / Headings ---- */
+  section {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 1rem;
+  }
+
+  h1.section-title {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem 0;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  h1.section-title::before {
+    content: attr(data-num);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    border: 1px solid var(--accent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  h2.sub-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin: 2rem 0 0.6rem 0;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1.25rem 0 0.4rem 0;
+    color: var(--ink-soft);
+  }
+
+  p { margin: 0.65rem 0; max-width: 72ch; }
+  p.lead { font-size: 1.05rem; color: var(--ink-soft); max-width: 65ch; }
+
+  strong, b { font-weight: 700; color: var(--ink); }
+  em, i { font-style: italic; }
+
+  /* inline code */
+  p code, li code, td code, .note code, .warn code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    padding: 0.05em 0.35em;
+    border-radius: 3px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ---- Tables ---- */
+  .table-wrap {
+    margin: 1rem 0 1.5rem;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: var(--paper);
+  }
+
+  th {
+    text-align: left;
+    background: var(--bg-soft);
+    font-weight: 700;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  td {
+    padding: 0.55rem 0.85rem;
+    border-top: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+
+  tr:hover td { background: var(--bg); }
+
+  td.uml {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    color: var(--accent);
+  }
+  td.code-cell {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+
+  /* ---- Code blocks ---- */
+  .code-wrap {
+    position: relative;
+    margin: 0.85rem 0 1.25rem;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--code-ink);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, background 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .code-wrap:hover .copy-btn { opacity: 1; }
+  .copy-btn:hover { background: rgba(255,255,255,0.15); }
+  .copy-btn.copied { background: var(--accent); border-color: var(--accent); }
+
+  pre {
+    margin: 0;
+    background: var(--code-bg);
+    color: var(--code-ink);
+    padding: 1.1rem 1.25rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.81rem;
+    line-height: 1.55;
+    tab-size: 4;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    white-space: pre;
+  }
+
+  /* Syntax highlight tokenek */
+  .tok-kw  { color: var(--code-key); font-weight: 600; }
+  .tok-str { color: var(--code-str); }
+  .tok-num { color: var(--code-num); }
+  .tok-com { color: var(--code-comment); font-style: italic; }
+  .tok-typ { color: var(--code-type); }
+  .tok-fn  { color: #e6b86a; }
+
+  /* ---- Note / Warn boxes ---- */
+  .note, .warn {
+    margin: 1rem 0;
+    padding: 0.85rem 1rem 0.85rem 1.25rem;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    position: relative;
+  }
+  .note {
+    background: var(--note-bg);
+    border-left: 3px solid var(--note-rule);
+  }
+  .warn {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn-rule);
+  }
+  .note::before, .warn::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .note::before { color: var(--note-rule); }
+  .warn::before { color: var(--warn-rule); }
+
+  /* ---- Bullet lists ---- */
+  ul.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+  }
+  ul.bullets li {
+    position: relative;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    line-height: 1.55;
+  }
+  ul.bullets li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    font-size: 0.65rem;
+    color: var(--accent);
+  }
+
+  /* Mobil */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.toc {
+      position: static;
+      height: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    main { padding: 2rem 1.5rem 4rem; }
+    header.hero h1 { font-size: 2.25rem; }
+    .theme-toggle { top: 1rem; right: 1rem; }
+  }
+
+  /* Print */
+  @media print {
+    aside.toc, .theme-toggle, .copy-btn { display: none; }
+    .layout { grid-template-columns: 1fr; max-width: none; }
+    main { padding: 1.5cm; }
+    body { background: white; font-size: 10pt; }
+    pre { font-size: 8.5pt; page-break-inside: avoid; }
+    section { page-break-inside: avoid; }
+    header.hero h1 { font-size: 24pt; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<div class="layout">
+
+  <!-- ============ TOC ============ -->
+  <aside class="toc">
+    <h2>OEP ZH</h2>
+    <div class="subtitle">Összefoglaló &nbsp;·&nbsp; UML → C#</div>
+    <ol>
+      <li>
+        <a href="#s1">UML osztálydiagram</a>
+        <ul>
+          <li><a href="#s1-1">Láthatóság, módosítók</a></li>
+          <li><a href="#s1-2">Asszociációk</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s2">UML konstrukciók C#-ban</a>
+        <ul>
+          <li><a href="#s2-1">Mezők, property-k</a></li>
+          <li><a href="#s2-2">Abstract, polimorfizmus</a></li>
+          <li><a href="#s2-3">Kompozíció &amp; kollekció</a></li>
+          <li><a href="#s2-4">Kétirányú kapcsolat</a></li>
+          <li><a href="#s2-5">Operátor, indexer, enum</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s3">Tervezési minták</a>
+        <ul>
+          <li><a href="#s3-1">Template Method</a></li>
+          <li><a href="#s3-2">Composite</a></li>
+          <li><a href="#s3-3">Polimorf elágazás</a></li>
+          <li><a href="#s3-4">Előfeltétel &amp; kivétel</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s4">Programozási tételek</a>
+        <ul>
+          <li><a href="#s4-1">Összegzés</a></li>
+          <li><a href="#s4-2">Megszámlálás</a></li>
+          <li><a href="#s4-3">Eldöntés</a></li>
+          <li><a href="#s4-4">Maximumkeresés</a></li>
+          <li><a href="#s4-5">Feltételes max/min</a></li>
+          <li><a href="#s4-6">Részfeladat</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s5">Bemenet feldolgozása</a>
+        <ul>
+          <li><a href="#s5-1">Alap fájlolvasás</a></li>
+          <li><a href="#s5-2">Mintapélda: kurzus</a></li>
+          <li><a href="#s5-3">Kérdések megválaszolása</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s6">C# eszköztár</a>
+        <ul>
+          <li><a href="#s6-1">Property-k</a></li>
+          <li><a href="#s6-2">Konstruktor láncolás</a></li>
+          <li><a href="#s6-3">Kollekciók</a></li>
+          <li><a href="#s6-4">LINQ</a></li>
+          <li><a href="#s6-5">Hibakezelés</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s7">Csapdák &amp; checklist</a>
+      </li>
+    </ol>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <button class="theme-toggle" id="themeToggle" title="Téma váltása" aria-label="Téma váltása">
+      <span id="themeIcon">☾</span>
+    </button>
+
+    <header class="hero">
+      <div class="eyebrow">Gyors átfutás &nbsp; · &nbsp; ZH segédanyag</div>
+      <h1>OEP ZH <span class="accent">összefoglaló</span></h1>
+      <p class="lead">UML osztálydiagramok átültetése C#-ra: tervezési minták, programozási tételek és visszatérő konstrukciók egy oldalon.</p>
+      <div class="meta">
+        <span>UML → C#</span>
+        <span>Tervezési minták</span>
+        <span>Tételek &amp; fájlbeolvasás</span>
+      </div>
+    </header>
+
+    <!-- ====== 1. UML alapok ====== -->
+    <section id="s1">
+      <h1 class="section-title" data-num="01">UML osztálydiagram – jelölések</h1>
+
+      <h2 class="sub-title" id="s1-1">Láthatóság és módosítók</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Jel</th><th>Jelentés</th><th>C# megfelelő</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="uml">+</td><td>public</td><td><code>public</code></td></tr>
+            <tr><td class="uml">#</td><td>protected</td><td><code>protected</code></td></tr>
+            <tr><td class="uml">-</td><td>private</td><td><code>private</code></td></tr>
+            <tr><td class="uml">~</td><td>package / internal</td><td><code>internal</code></td></tr>
+            <tr><td class="uml"><em>dőlt név</em></td><td>absztrakt osztály vagy metódus</td><td><code>abstract</code></td></tr>
+            <tr><td class="uml"><u>aláhúzott</u></td><td>statikus tag / metódus</td><td><code>static</code></td></tr>
+            <tr><td class="uml">{abstract}</td><td>absztrakt metódus</td><td><code>abstract</code></td></tr>
+            <tr><td class="uml">{virtual}</td><td>felüldefiniálható (alapért. implementáció van)</td><td><code>virtual</code></td></tr>
+            <tr><td class="uml">{override}</td><td>felüldefiniálás örökléskor</td><td><code>override</code></td></tr>
+            <tr><td class="uml">{query}</td><td>lekérdező metódus (állapotot nem változtat)</td><td>(konvenció)</td></tr>
+            <tr><td class="uml">{getter}</td><td>csak getter</td><td><code>{ get; }</code></td></tr>
+            <tr><td class="uml">{getter, setter}</td><td>olvasható-írható</td><td><code>{ get; set; }</code></td></tr>
+            <tr><td class="uml">{unique}</td><td>halmaz jellegű kapcsolat (nincs duplikátum)</td><td><code>HashSet</code> / ellenőrzés</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sub-title" id="s1-2">Asszociációk és kapcsolatok</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>UML jel</th><th>Kapcsolat</th><th>Élettartam / felelősség</th><th>C# megvalósítás</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="uml">─────▷</td>
+              <td>Öröklődés (általánosítás)</td>
+              <td>leszármazott <em>IS-A</em> ős</td>
+              <td><code>class B : A</code></td>
+            </tr>
+            <tr>
+              <td class="uml">- - - -▷</td>
+              <td>Interfész megvalósítás</td>
+              <td><em>implements</em></td>
+              <td><code>class A : IFoo</code></td>
+            </tr>
+            <tr>
+              <td class="uml">◆────</td>
+              <td>Kompozíció (telt rombusz)</td>
+              <td>rész élete a teljeshez kötött (létrehozza és birtokolja)</td>
+              <td>konstruktorban <code>new</code></td>
+            </tr>
+            <tr>
+              <td class="uml">◇────</td>
+              <td>Aggregáció (üres rombusz)</td>
+              <td>rész önállóan is létezhet, csak hivatkozást tárolunk</td>
+              <td>konstruktor- / metódusparaméterként kapja</td>
+            </tr>
+            <tr>
+              <td class="uml">────</td>
+              <td>Egyszerű asszociáció</td>
+              <td>tagváltozó / referencia</td>
+              <td>private mező vagy property</td>
+            </tr>
+            <tr>
+              <td class="uml">* / 1..* / 0..1</td>
+              <td>Multiplicitás</td>
+              <td>hány elem lehet a kapcsolatban</td>
+              <td>lista / opcionális mező</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note" data-label="Megjegyzés">
+        A kompozíció és aggregáció eldöntésének praktikus szabálya: ha a tartalmazó osztály <strong>konstruktorából</strong> indul a tagosztály létrehozása (azaz a paraméterben az adatokat kapjuk meg, nem kész objektumot), akkor <strong>kompozíció</strong>. Ha kívülről kapott, már létező objektumra mutató referenciát tárolunk, az <strong>aggregáció</strong>.
+      </div>
+    </section>
+
+    <!-- ====== 2. UML → C# fordítási minták ====== -->
+    <section id="s2">
+      <h1 class="section-title" data-num="02">UML konstrukciók C#-ban</h1>
+
+      <h2 class="sub-title" id="s2-1">Osztály alapváz, mezők és tulajdonságok</h2>
+      <p>A védelmi szintek pontosan megfeleltethetők. A <code>{getter}</code> jelölés egy csak-olvasható propertyt takar, amit célszerű automatikus property-vel megvalósítani:</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">class</span> <span class="tok-typ">Starship</span> {
+    <span class="tok-com">// # name : string { getter }   →</span>
+    <span class="tok-kw">public</span> <span class="tok-typ">string</span> Name { <span class="tok-kw">get</span>; }            <span class="tok-com">// csak getter, csak konstruktorból állítható</span>
+    <span class="tok-com">// # Shield : int               →</span>
+    <span class="tok-kw">protected</span> <span class="tok-typ">int</span> Shield { <span class="tok-kw">get</span>; <span class="tok-kw">set</span>; }     <span class="tok-com">// protected, mert leszármazott is használja</span>
+    <span class="tok-com">// - balance : int              →</span>
+    <span class="tok-kw">private</span> <span class="tok-typ">int</span> balance;                   <span class="tok-com">// teljesen rejtett mező</span>
+
+    <span class="tok-kw">public</span> <span class="tok-fn">Starship</span>(<span class="tok-typ">string</span> n, <span class="tok-typ">int</span> sh) {
+        Name = n;          <span class="tok-com">// a getter-only property konstruktorból kapja az értékét</span>
+        Shield = sh;
+    }
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s2-2">Absztrakt osztály és metódus, polimorfizmus</h2>
+      <p>Az UML-ben dőlt betűs osztálynév és <code>{abstract}</code> metódus → C#-ban <code>abstract</code>. A leszármazottakban <code>override</code> kötelező. Ha az ősben van alapértelmezett megvalósítás, amit átírhatnak, az <code>virtual</code> → <code>override</code>.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">abstract class</span> <span class="tok-typ">Starship</span> {
+    <span class="tok-kw">public abstract</span> <span class="tok-typ">int</span> <span class="tok-fn">FireP</span>();              <span class="tok-com">// {abstract}</span>
+    <span class="tok-kw">public virtual</span> <span class="tok-typ">int</span> <span class="tok-fn">Defense</span>() =&gt; Shield;   <span class="tok-com">// van alapért. impl., de felüldefiniálható</span>
+}
+
+<span class="tok-kw">class</span> <span class="tok-typ">Lasership</span> : <span class="tok-typ">Starship</span> {
+    <span class="tok-kw">public</span> <span class="tok-fn">Lasership</span>(<span class="tok-typ">string</span> n, <span class="tok-typ">int</span> sh, <span class="tok-typ">int</span> ar, <span class="tok-typ">int</span> g) : <span class="tok-kw">base</span>(n, sh, ar, g) {}
+    <span class="tok-kw">public override</span> <span class="tok-typ">int</span> <span class="tok-fn">FireP</span>() =&gt; Shield;    <span class="tok-com">// {override} – kötelező</span>
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s2-3">Kompozíció ⇄ kollekció (1-* kapcsolat)</h2>
+      <p>A leggyakoribb minta: egy osztály belül listát tart a hozzá tartozó alelemekből. Pl. <em>Solarsystem * Planet</em>, <em>AmPark 2..* TargetShot</em>, <em>Folder * Registration</em>.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">class</span> <span class="tok-typ">Solarsystem</span> {
+    <span class="tok-kw">private</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Planet</span>&gt; planets = <span class="tok-kw">new</span>();          <span class="tok-com">// - planets : Planet[*]</span>
+
+    <span class="tok-kw">public void</span> <span class="tok-fn">AddPlanet</span>(<span class="tok-typ">Planet</span> p) {
+        <span class="tok-kw">if</span> (planets.<span class="tok-fn">Contains</span>(p))                   <span class="tok-com">// {unique} → duplikátum tiltás</span>
+            <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>();
+        planets.<span class="tok-fn">Add</span>(p);
+    }
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s2-4">Kétirányú kapcsolat (visszamutatás)</h2>
+      <p>Ha az UML-en mindkét végén van név (pl. <em>protects</em> / <em>ships</em>), akkor mindkét oldal tárolja a másikat. Az érvényesség fenntartása érdekében az egyik oldal metódusa hívja a másikat, és kerülni kell a végtelen rekurziót (általában lekérdezéssel ellenőrzünk):</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// Starship.Protect(p: Planet): if planet != null then error endif;</span>
+<span class="tok-com">//                              planet := p;  planet.ProtectedBy(this)</span>
+<span class="tok-kw">public void</span> <span class="tok-fn">Protect</span>(<span class="tok-typ">Planet</span> p) {
+    <span class="tok-kw">if</span> (planet != <span class="tok-kw">null</span>) <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>();
+    planet = p;
+    p.<span class="tok-fn">ProtectedBy</span>(<span class="tok-kw">this</span>);            <span class="tok-com">// a másik oldal "vakon" csak hozzáad</span>
+}
+
+<span class="tok-com">// Planet.ProtectedBy(h: Starship): if h in ships then error endif; ships.Add(h)</span>
+<span class="tok-kw">public void</span> <span class="tok-fn">ProtectedBy</span>(<span class="tok-typ">Starship</span> h) {
+    <span class="tok-kw">if</span> (ships.<span class="tok-fn">Contains</span>(h)) <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>();
+    ships.<span class="tok-fn">Add</span>(h);
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s2-5">Operátor túlterhelés, indexelő, enum, struct/record</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">enum</span> <span class="tok-typ">Content</span> { EMPTY, WALL, GHOST, TREASURE }      <span class="tok-com">// &lt;&lt;enumeration&gt;&gt;</span>
+
+<span class="tok-kw">readonly record struct</span> <span class="tok-typ">Position</span>(<span class="tok-typ">int</span> X, <span class="tok-typ">int</span> Y) {     <span class="tok-com">// &lt;&lt;record&gt;&gt; – értékszemantika</span>
+    <span class="tok-kw">public</span> <span class="tok-typ">Position</span> <span class="tok-kw">operator</span> +(<span class="tok-typ">Position</span> a, <span class="tok-typ">Position</span> b) =&gt;
+        <span class="tok-kw">new</span> <span class="tok-typ">Position</span>(a.X + b.X, a.Y + b.Y);
+    <span class="tok-kw">public</span> <span class="tok-typ">bool</span> <span class="tok-fn">Inside</span>(<span class="tok-typ">int</span> l, <span class="tok-typ">int</span> n, <span class="tok-typ">int</span> k, <span class="tok-typ">int</span> m) =&gt;
+        l &lt;= X &amp;&amp; X &lt;= n &amp;&amp; k &lt;= Y &amp;&amp; Y &lt;= m;
+}</code></pre></div>
+    </section>
+
+    <!-- ====== 3. Tervezési minták ====== -->
+    <section id="s3">
+      <h1 class="section-title" data-num="03">Visszatérő tervezési minták</h1>
+
+      <h2 class="sub-title" id="s3-1">3.1 Template Method – algoritmus váza + abstract lépés</h2>
+      <p>Az ősosztály implementálja az <em>általános</em> viselkedést (pl. <code>Protect</code>, <code>Leave</code>), miközben hagy egy <strong>absztrakt lépést</strong> (pl. <code>FireP()</code>), amit a leszármazottak töltenek ki. Tipikus a <em>Starship</em>-példa: minden hajó tud védeni és elhagyni egy bolygót, de a tűzerőt mindenki másképp számolja (<code>armor/2</code>, <code>guard</code>, <code>Shield</code>).</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">abstract class</span> <span class="tok-typ">Starship</span> {
+    <span class="tok-kw">public void</span> <span class="tok-fn">Leave</span>() {                   <span class="tok-com">// sablon-metódus: rögzített algoritmus</span>
+        <span class="tok-kw">if</span> (planet == <span class="tok-kw">null</span>) <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>();
+        planet.<span class="tok-fn">LeftBy</span>(<span class="tok-kw">this</span>);
+        planet = <span class="tok-kw">null</span>;
+    }
+    <span class="tok-kw">public abstract</span> <span class="tok-typ">int</span> <span class="tok-fn">FireP</span>();            <span class="tok-com">// változó lépés – leszármazott dönt</span>
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s3-2">3.2 Composite – egyforma kezelés egyszerű és összetett elemekre</h2>
+      <p>Egy ős (pl. <em>Registration</em>) absztrakt műveletet ír elő (<code>GetSize</code>), amit a levél (<em>File</em>) közvetlenül, a konténer (<em>Folder</em>) pedig az alelemein <strong>végigiterálva</strong> valósít meg. Így a kliens (<em>FileSystem</em>) egységesen kezelheti.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">abstract class</span> <span class="tok-typ">Registration</span> {
+    <span class="tok-kw">public abstract</span> <span class="tok-typ">int</span> <span class="tok-fn">GetSize</span>();
+}
+<span class="tok-kw">class</span> <span class="tok-typ">File</span> : <span class="tok-typ">Registration</span> {
+    <span class="tok-kw">private</span> <span class="tok-typ">int</span> size;
+    <span class="tok-kw">public override</span> <span class="tok-typ">int</span> <span class="tok-fn">GetSize</span>() =&gt; size;
+}
+<span class="tok-kw">class</span> <span class="tok-typ">Folder</span> : <span class="tok-typ">Registration</span> {
+    <span class="tok-kw">private</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Registration</span>&gt; items = <span class="tok-kw">new</span>();
+    <span class="tok-kw">public override</span> <span class="tok-typ">int</span> <span class="tok-fn">GetSize</span>() {
+        <span class="tok-typ">int</span> s = <span class="tok-num">0</span>;                              <span class="tok-com">// size + ∑ e.GetSize()</span>
+        <span class="tok-kw">foreach</span> (<span class="tok-kw">var</span> e <span class="tok-kw">in</span> items) s += e.<span class="tok-fn">GetSize</span>();
+        <span class="tok-kw">return</span> s;
+    }
+    <span class="tok-kw">public void</span> <span class="tok-fn">Add</span>(<span class="tok-typ">Registration</span> r) =&gt; items.<span class="tok-fn">Add</span>(r);
+    <span class="tok-kw">public void</span> <span class="tok-fn">Remove</span>(<span class="tok-typ">Registration</span> r) =&gt; items.<span class="tok-fn">Remove</span>(r);
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s3-3">3.3 Polimorf elágazás helyettesítése</h2>
+      <p>Ha <code>switch</code>-csel akarnánk típus szerint különböző viselkedést hívni, az általában <strong>polimorfizmussal</strong> oldható meg szebben: virtuális metódus, amit minden leszármazott felüldefiniál.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// Rossz: if (s is Wallbreaker) ... else if (s is Lasership) ...</span>
+<span class="tok-com">// Jó:    s.FireP()    // virtuális/abstract metódus, mindenki tudja, mit ad vissza</span></code></pre></div>
+
+      <h2 class="sub-title" id="s3-4">3.4 Egyedi szabály érvényesítése konstruktorban / setterben</h2>
+      <p>Az UML melléklapokon szereplő <code>if … then error endif</code> előfeltételek a C# kódban általában <strong>kivételt</strong> dobnak (<code>throw new ArgumentException</code> / <code>InvalidOperationException</code>). Ez biztosítja, hogy érvénytelen állapotú objektum sose jöjjön létre.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// AmPark(c: TargetShot[]):   if |c| &lt; 2 then error endif</span>
+<span class="tok-kw">public</span> <span class="tok-fn">AmPark</span>(<span class="tok-typ">TargetShot</span>[] c) {
+    <span class="tok-kw">if</span> (c.Length &lt; <span class="tok-num">2</span>) <span class="tok-kw">throw new</span> <span class="tok-typ">ArgumentException</span>(<span class="tok-str">"Legalább 2 célzónra van szükség."</span>);
+    targets = c;
+    guests  = <span class="tok-kw">new</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Guest</span>&gt;();
+}</code></pre></div>
+    </section>
+
+    <!-- ====== 4. Programozási tételek ====== -->
+    <section id="s4">
+      <h1 class="section-title" data-num="04">Programozási tételek és tipikus részfeladatok</h1>
+
+      <p>A tételek többnyire <strong>osztály metódusaként</strong> jelennek meg, ahol a metódus végigfut a saját kollekcióján (<code>foreach</code>) és az alelemek hasonló nevű metódusait hívja. Ez a <strong>delegálás</strong> szépen tükrözi az UML <code>∑</code>, <code>MAX</code>, <code>⊕</code> kifejezéseit.</p>
+
+      <h2 class="sub-title" id="s4-1">Összegzés (Σ)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// TotalShield(): real {query}    →   return ∑ e in ships e.Shield</span>
+<span class="tok-kw">public</span> <span class="tok-typ">double</span> <span class="tok-fn">TotalShield</span>() {
+    <span class="tok-typ">double</span> sum = <span class="tok-num">0</span>;
+    <span class="tok-kw">foreach</span> (<span class="tok-kw">var</span> s <span class="tok-kw">in</span> ships) sum += s.Shield;
+    <span class="tok-kw">return</span> sum;                    <span class="tok-com">// (LINQ:  return ships.Sum(s =&gt; s.Shield);)</span>
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s4-2">Megszámlálás</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// ShipCount(): int    →    return |ships|</span>
+<span class="tok-kw">public</span> <span class="tok-typ">int</span> <span class="tok-fn">ShipCount</span>() =&gt; ships.Count;</code></pre></div>
+
+      <h2 class="sub-title" id="s4-3">Eldöntés (∃) és kiválogatás (⊕)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// Defenseless(): return ⊕ e in planets &lt;e&gt;  e.ShipCount() = 0</span>
+<span class="tok-com">// "Van-e olyan bolygó, amelynek nincs hajója?" – az UML ⊕ valójában: gyűjtsük ki őket.</span>
+<span class="tok-kw">public</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Planet</span>&gt; <span class="tok-fn">Defenseless</span>() {
+    <span class="tok-kw">var</span> result = <span class="tok-kw">new</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Planet</span>&gt;();
+    <span class="tok-kw">foreach</span> (<span class="tok-kw">var</span> p <span class="tok-kw">in</span> planets)
+        <span class="tok-kw">if</span> (p.<span class="tok-fn">ShipCount</span>() == <span class="tok-num">0</span>) result.<span class="tok-fn">Add</span>(p);
+    <span class="tok-kw">return</span> result;
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s4-4">Maximumkeresés (jellel együtt)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// MaxFireP(): bool × int × Starship   →   return MAX e in ships e.FireP()</span>
+<span class="tok-kw">public</span> (<span class="tok-typ">bool</span> found, <span class="tok-typ">int</span> value, <span class="tok-typ">Starship</span> ship) <span class="tok-fn">MaxFireP</span>() {
+    <span class="tok-kw">if</span> (ships.Count == <span class="tok-num">0</span>) <span class="tok-kw">return</span> (<span class="tok-kw">false</span>, <span class="tok-num">0</span>, <span class="tok-kw">null</span>);
+    <span class="tok-kw">var</span> best = ships[<span class="tok-num">0</span>];
+    <span class="tok-typ">int</span> maxV = best.<span class="tok-fn">FireP</span>();
+    <span class="tok-kw">for</span> (<span class="tok-typ">int</span> i = <span class="tok-num">1</span>; i &lt; ships.Count; i++) {
+        <span class="tok-typ">int</span> v = ships[i].<span class="tok-fn">FireP</span>();
+        <span class="tok-kw">if</span> (v &gt; maxV) { maxV = v; best = ships[i]; }
+    }
+    <span class="tok-kw">return</span> (<span class="tok-kw">true</span>, maxV, best);
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s4-5">Feltételes maximum / minimum (legnagyobb negatív, legkisebb pozitív)</h2>
+      <p>Ha nem biztos, hogy van megfelelő elem, két logikai flag-et viszünk magunkkal (<code>lmax</code>, <code>lmin</code>), és csak akkor írjuk felül az aktuális szélsőértéket, ha a feltétel teljesül és (még nincs érték <strong>vagy</strong> jobb a korábbinál).</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// Bemenet: egy számsorozat (e in x)</span>
+<span class="tok-typ">bool</span> lmax = <span class="tok-kw">false</span>, lmin = <span class="tok-kw">false</span>;
+<span class="tok-typ">int</span> max = <span class="tok-num">0</span>, min = <span class="tok-num">0</span>;
+<span class="tok-kw">foreach</span> (<span class="tok-typ">int</span> e <span class="tok-kw">in</span> x) {
+    <span class="tok-kw">if</span> (e &lt; <span class="tok-num">0</span> &amp;&amp; (!lmax || e &gt; max)) { max = e; lmax = <span class="tok-kw">true</span>; }   <span class="tok-com">// legnagyobb negatív</span>
+    <span class="tok-kw">if</span> (e &gt; <span class="tok-num">0</span> &amp;&amp; (!lmin || e &lt; min)) { min = e; lmin = <span class="tok-kw">true</span>; }   <span class="tok-com">// legkisebb pozitív</span>
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s4-6">Részfeladatok – kifejtett tétel (más tétel belsejéből hívott)</h2>
+      <p>Sok osztálymetódus kifejezhető egy másik metódus eredményeként, vagy egy belső segédmetódust hív. Pl. <code>GetMax</code> és <code>RemMax</code> mindketten egy közös <code>MaxIndex</code>-re támaszkodnak:</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">private</span> <span class="tok-typ">int</span> <span class="tok-fn">MaxIndex</span>() {                              <span class="tok-com">// {query} – csak olvasás</span>
+    <span class="tok-kw">if</span> (seq.Count == <span class="tok-num">0</span>) <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>();
+    <span class="tok-typ">int</span> idx = <span class="tok-num">0</span>;
+    <span class="tok-kw">for</span> (<span class="tok-typ">int</span> i = <span class="tok-num">1</span>; i &lt; seq.Count; i++)
+        <span class="tok-kw">if</span> (seq[i].pr &gt; seq[idx].pr) idx = i;
+    <span class="tok-kw">return</span> idx;
+}
+<span class="tok-kw">public</span> <span class="tok-typ">Item</span> <span class="tok-fn">GetMax</span>() =&gt; seq[<span class="tok-fn">MaxIndex</span>()];               <span class="tok-com">// csak lekérdez</span>
+<span class="tok-kw">public</span> <span class="tok-typ">Item</span> <span class="tok-fn">RemMax</span>() {                                 <span class="tok-com">// lekérdez ÉS töröl</span>
+    <span class="tok-typ">int</span> i = <span class="tok-fn">MaxIndex</span>();
+    <span class="tok-kw">var</span> e = seq[i];
+    seq.<span class="tok-fn">RemoveAt</span>(i);
+    <span class="tok-kw">return</span> e;
+}</code></pre></div>
+    </section>
+
+    <!-- ====== 5. Fájlbeolvasás ====== -->
+    <section id="s5">
+      <h1 class="section-title" data-num="05">Bemenet feldolgozása: szekvenciális input fájl</h1>
+
+      <p>A ZH-ban szinte mindig egy szövegfájlból kell objektumokat felépíteni. Az állomány egy <strong>sorozat</strong>, amit egyszer olvasunk végig. Tipikus váz: az első sor a számosság, utána egy blokk minden elemenként, a blokk fejléce mondja meg, hány alelem következik.</p>
+
+      <h2 class="sub-title" id="s5-1">Alap fájlolvasás C#-ban</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">using</span> System.IO;
+
+<span class="tok-typ">string</span>[] lines = <span class="tok-typ">File</span>.<span class="tok-fn">ReadAllLines</span>(<span class="tok-str">"input.txt"</span>);           <span class="tok-com">// egyszerű, ha kicsi</span>
+<span class="tok-com">// vagy:</span>
+<span class="tok-kw">using</span> (<span class="tok-kw">var</span> sr = <span class="tok-kw">new</span> <span class="tok-typ">StreamReader</span>(<span class="tok-str">"input.txt"</span>)) {
+    <span class="tok-typ">int</span> n = <span class="tok-typ">int</span>.<span class="tok-fn">Parse</span>(sr.<span class="tok-fn">ReadLine</span>());
+    <span class="tok-kw">for</span> (<span class="tok-typ">int</span> i = <span class="tok-num">0</span>; i &lt; n; i++) {
+        <span class="tok-typ">string</span>[] head = sr.<span class="tok-fn">ReadLine</span>().<span class="tok-fn">Split</span>(
+            <span class="tok-kw">new</span>[] {<span class="tok-str">' '</span>, <span class="tok-str">'\t'</span>}, <span class="tok-typ">StringSplitOptions</span>.RemoveEmptyEntries);
+        <span class="tok-typ">string</span> name = head[<span class="tok-num">0</span>];
+        <span class="tok-typ">int</span>    count = <span class="tok-typ">int</span>.<span class="tok-fn">Parse</span>(head[<span class="tok-num">1</span>]);
+        <span class="tok-kw">for</span> (<span class="tok-typ">int</span> j = <span class="tok-num">0</span>; j &lt; count; j++) {
+            <span class="tok-typ">string</span>[] parts = sr.<span class="tok-fn">ReadLine</span>().<span class="tok-fn">Split</span>(...);
+            <span class="tok-com">// ... egy alelem felépítése</span>
+        }
+    }
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s5-2">Mintapélda: kurzus → vizsga (Normal / Utó) → helyszínek</h2>
+      <p>Az input fájl szerkezetét egy <strong>állapotgép</strong>ként érdemes olvasni: aktuális kurzus → annak vizsgái → azok helyszínei. Mindig <em>azonnal hozzákötjük</em> az új objektumot a szülőhöz.</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// 2                        ← kurzusok száma</span>
+<span class="tok-com">// Analizis 2                ← név, vizsgák száma</span>
+<span class="tok-com">// N 22.05.22 Bolyai 0-826   ← típus, dátum, termek …</span>
+<span class="tok-com">// U 22.05.31 Mogyorodi Fejer</span>
+<span class="tok-com">// Programozas 1</span>
+<span class="tok-com">// N 22.05.20 Lovarda</span>
+<span class="tok-com">// Analizis                  ← kérdéses kurzus neve</span>
+
+<span class="tok-kw">var</span> kurzusok = <span class="tok-kw">new</span> <span class="tok-typ">List</span>&lt;<span class="tok-typ">Kurzus</span>&gt;();
+<span class="tok-typ">int</span> K = <span class="tok-typ">int</span>.<span class="tok-fn">Parse</span>(sr.<span class="tok-fn">ReadLine</span>());
+<span class="tok-kw">for</span> (<span class="tok-typ">int</span> i = <span class="tok-num">0</span>; i &lt; K; i++) {
+    <span class="tok-kw">var</span> head = sr.<span class="tok-fn">ReadLine</span>().<span class="tok-fn">Split</span>(<span class="tok-kw">new</span>[]{<span class="tok-str">' '</span>,<span class="tok-str">'\t'</span>},
+                  <span class="tok-typ">StringSplitOptions</span>.RemoveEmptyEntries);
+    <span class="tok-kw">var</span> kurzus = <span class="tok-kw">new</span> <span class="tok-typ">Kurzus</span>(head[<span class="tok-num">0</span>]);
+    <span class="tok-typ">int</span> VN = <span class="tok-typ">int</span>.<span class="tok-fn">Parse</span>(head[<span class="tok-num">1</span>]);
+    <span class="tok-kw">for</span> (<span class="tok-typ">int</span> j = <span class="tok-num">0</span>; j &lt; VN; j++) {
+        <span class="tok-kw">var</span> v = sr.<span class="tok-fn">ReadLine</span>().<span class="tok-fn">Split</span>(<span class="tok-kw">new</span>[]{<span class="tok-str">' '</span>,<span class="tok-str">'\t'</span>},
+                  <span class="tok-typ">StringSplitOptions</span>.RemoveEmptyEntries);
+        <span class="tok-typ">Vizsga</span> vizsga = v[<span class="tok-num">0</span>] == <span class="tok-str">"N"</span>
+            ? <span class="tok-kw">new</span> <span class="tok-typ">Normal</span>(v[<span class="tok-num">1</span>])
+            : <span class="tok-kw">new</span> <span class="tok-typ">Uto</span>(v[<span class="tok-num">1</span>]);
+        <span class="tok-kw">for</span> (<span class="tok-typ">int</span> k = <span class="tok-num">2</span>; k &lt; v.Length; k++)
+            vizsga.<span class="tok-fn">AddHelyszin</span>(v[k]);
+        kurzus.<span class="tok-fn">AddVizsga</span>(vizsga);
+    }
+    kurzusok.<span class="tok-fn">Add</span>(kurzus);
+}
+<span class="tok-typ">string</span> kerdes = sr.<span class="tok-fn">ReadLine</span>().<span class="tok-fn">Trim</span>();</code></pre></div>
+
+      <div class="note" data-label="Megjegyzés">
+        A bonyolultabb (jeles) változatban a vizsga maga is 1+n sort foglal el: a vizsga fejléce a <em>helyszínszámot</em> adja meg, és a következő n sor egy-egy helyszín adatait (terem, kapacitás, majd hallgatónevek listája). A minta marad ugyanaz: az aktuális vizsgát „megnyitjuk”, n alelemet beolvasunk, a végén „lezárjuk”.
+      </div>
+
+      <h2 class="sub-title" id="s5-3">Kérdések megválaszolása az objektumhálón</h2>
+      <p>A kérdésekre választ adó metódusok a fent leírt tételekkel oldhatók meg: keresés (<code>Find</code>), eldöntés (van-e ilyen elem), maximumkeresés (legtöbb helyszín).</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// Van-e utóvizsga?</span>
+<span class="tok-kw">public</span> <span class="tok-typ">bool</span> <span class="tok-fn">VanUtoVizsga</span>() {
+    <span class="tok-kw">foreach</span> (<span class="tok-kw">var</span> v <span class="tok-kw">in</span> vizsgak)
+        <span class="tok-kw">if</span> (v <span class="tok-kw">is</span> <span class="tok-typ">Uto</span>) <span class="tok-kw">return</span> <span class="tok-kw">true</span>;
+    <span class="tok-kw">return</span> <span class="tok-kw">false</span>;
+}
+
+<span class="tok-com">// Melyik vizsgát bonyolítják a legtöbb helyszínen?</span>
+<span class="tok-kw">public</span> <span class="tok-typ">Vizsga</span> <span class="tok-fn">LegtobbHelyszinu</span>() {
+    <span class="tok-kw">if</span> (vizsgak.Count == <span class="tok-num">0</span>) <span class="tok-kw">return</span> <span class="tok-kw">null</span>;
+    <span class="tok-kw">var</span> best = vizsgak[<span class="tok-num">0</span>];
+    <span class="tok-kw">foreach</span> (<span class="tok-kw">var</span> v <span class="tok-kw">in</span> vizsgak)
+        <span class="tok-kw">if</span> (v.<span class="tok-fn">HelyszinSzam</span>() &gt; best.<span class="tok-fn">HelyszinSzam</span>()) best = v;
+    <span class="tok-kw">return</span> best;
+}</code></pre></div>
+
+      <h3>Kimenet és hibás kérdés kezelése</h3>
+      <p>Külön figyelni a <em>peremfeltételekre</em>: nem létező kurzus → fix szöveg; létezik, de üres → más szöveg; rendben van → tényleges válasz. Ezt érdemes kétszintű <code>if</code>-fel írni, nem mindent a <code>Main</code>-be:</p>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">var</span> kurzus = kurzusok.<span class="tok-fn">FirstOrDefault</span>(k =&gt; k.Nev == kerdes);
+<span class="tok-kw">if</span> (kurzus == <span class="tok-kw">null</span>)            <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">"rossz kurzus"</span>);
+<span class="tok-kw">else if</span> (kurzus.<span class="tok-fn">NincsVizsga</span>()) <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">"nincs"</span>);
+<span class="tok-kw">else</span> {
+    <span class="tok-kw">var</span> v = kurzus.<span class="tok-fn">LegtobbHelyszinu</span>();
+    <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">$"van {v.Datum}"</span>);
+}</code></pre></div>
+    </section>
+
+    <!-- ====== 6. C# nyelvi eszköztár ====== -->
+    <section id="s6">
+      <h1 class="section-title" data-num="06">Hasznos C# nyelvi eszközök röviden</h1>
+
+      <h2 class="sub-title" id="s6-1">Tulajdonságok (property)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">public</span> <span class="tok-typ">string</span> Name { <span class="tok-kw">get</span>; }                  <span class="tok-com">// csak getter, csak init/konstruktor írhatja</span>
+<span class="tok-kw">public</span> <span class="tok-typ">int</span> Shield { <span class="tok-kw">get</span>; <span class="tok-kw">protected set</span>; }     <span class="tok-com">// kívülről csak olvasható</span>
+<span class="tok-kw">public</span> <span class="tok-typ">int</span> Size { <span class="tok-kw">get</span>; <span class="tok-kw">private set</span>; }         <span class="tok-com">// belül szabadon írjuk</span>
+
+<span class="tok-com">// Számolt property:</span>
+<span class="tok-kw">public</span> <span class="tok-typ">bool</span> IsEmpty =&gt; seq.Count == <span class="tok-num">0</span>;</code></pre></div>
+
+      <h2 class="sub-title" id="s6-2">Konstruktor láncolás</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">class</span> <span class="tok-typ">Wallbreaker</span> : <span class="tok-typ">Starship</span> {
+    <span class="tok-kw">public</span> <span class="tok-fn">Wallbreaker</span>(<span class="tok-typ">string</span> n, <span class="tok-typ">int</span> sh, <span class="tok-typ">int</span> ar, <span class="tok-typ">int</span> g)
+        : <span class="tok-kw">base</span>(n, sh, ar, g)              <span class="tok-com">// ős konstruktora</span>
+    { <span class="tok-com">/* extra mezőket itt inicializálnánk */</span> }
+}</code></pre></div>
+
+      <h2 class="sub-title" id="s6-3">Kollekciók – melyiket mikor?</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>UML</th><th>C# típus</th><th>Mire jó</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>[ ] / List</td><td><code>List&lt;T&gt;</code></td><td>rendezett, indexelhető, leggyakoribb</td></tr>
+            <tr><td>{unique}</td><td><code>HashSet&lt;T&gt;</code></td><td>halmaz, gyors tagsági teszt; vagy <code>List</code> + <code>Contains</code></td></tr>
+            <tr><td>Dictionary&lt;K,V&gt;</td><td><code>Dictionary&lt;K,V&gt;</code></td><td>kulcs-érték (pl. Position → Content)</td></tr>
+            <tr><td>* (sorrend lényeges)</td><td><code>List&lt;T&gt;</code></td><td>ha az olvasási sorrend számít</td></tr>
+            <tr><td>queue / stack</td><td><code>Queue&lt;T&gt;</code> / <code>Stack&lt;T&gt;</code></td><td>FIFO / LIFO</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sub-title" id="s6-4">LINQ – tétel-kódok rövidítése (ha biztos vagy benne)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code>ships.<span class="tok-fn">Count</span>(s =&gt; s.Shield &gt; <span class="tok-num">50</span>);             <span class="tok-com">// megszámlálás feltétellel</span>
+ships.<span class="tok-fn">Any</span>(s =&gt; s <span class="tok-kw">is</span> <span class="tok-typ">Lasership</span>);              <span class="tok-com">// eldöntés (van-e ilyen)</span>
+ships.<span class="tok-fn">Sum</span>(s =&gt; s.Shield);                    <span class="tok-com">// összegzés</span>
+ships.<span class="tok-fn">Max</span>(s =&gt; s.<span class="tok-fn">FireP</span>());                   <span class="tok-com">// maximum (érték)</span>
+ships.<span class="tok-fn">OrderByDescending</span>(s =&gt; s.<span class="tok-fn">FireP</span>())      <span class="tok-com">// legnagyobb tűzerejű</span>
+     .<span class="tok-fn">First</span>();
+ships.<span class="tok-fn">Where</span>(s =&gt; s.Planet == <span class="tok-kw">null</span>);          <span class="tok-com">// szűrés</span></code></pre></div>
+      <div class="warn" data-label="Figyelem">
+        A vizsgafeladatokban legtöbbször biztonságosabb a kézzel írt ciklus, mert <em>üres kollekciónál</em> a <code>Max</code> / <code>First</code> kivételt dob. Vagy ellenőrizz előtte, vagy használj kézi maximumkeresést jelzőbittel.
+      </div>
+
+      <h2 class="sub-title" id="s6-5">Hibakezelés (kivételek)</h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-com">// UML:  if planet = null then error endif</span>
+<span class="tok-kw">if</span> (planet == <span class="tok-kw">null</span>)
+    <span class="tok-kw">throw new</span> <span class="tok-typ">InvalidOperationException</span>(<span class="tok-str">"Nincs védett bolygó."</span>);
+
+<span class="tok-com">// Konstruktor előfeltétel:</span>
+<span class="tok-kw">if</span> (n &lt; <span class="tok-num">0</span>) <span class="tok-kw">throw new</span> <span class="tok-typ">ArgumentException</span>(<span class="tok-str">"n nem lehet negatív."</span>, <span class="tok-kw">nameof</span>(n));
+
+<span class="tok-com">// Felhasználói szinten:</span>
+<span class="tok-kw">try</span> {
+    starship.<span class="tok-fn">Leave</span>();
+} <span class="tok-kw">catch</span> (<span class="tok-typ">InvalidOperationException</span> e) {
+    <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">$"Hiba: {e.Message}"</span>);
+}</code></pre></div>
+    </section>
+
+    <!-- ====== 7. Csapdák & checklist ====== -->
+    <section id="s7">
+      <h1 class="section-title" data-num="07">Gyakori csapdák és ZH-ellenőrzőlista</h1>
+
+      <h2 class="sub-title">Az osztálydiagramról a kódra</h2>
+      <ul class="bullets">
+        <li>Minden mező <strong>láthatósági szintjét</strong> pontosan vidd át. Egy ellenőr külön nézi a <code>#</code> jelölést.</li>
+        <li><code>{getter}</code> = property csak getterrel. Ne tedd <code>public set</code>-té csak mert kényelmes.</li>
+        <li>Az <strong>absztrakt</strong> metódusoknak NEM lehet törzse; a leszármazottnak <code>override</code> kötelező.</li>
+        <li>Ha az ős és a leszármazott konstruktorszignatúrája megegyezik, akkor is ki kell írni az utódnál és <code>: base(...)</code>-szal továbbadni.</li>
+        <li>Kétirányú kapcsolatnál a <em>melyik oldal ellenőriz?</em> kérdést mindig az UML melléklap dönti el – ne tegyél bele saját ellenőrzést, ha az UML nem mondja.</li>
+        <li>Az <code>{unique}</code> megszorítást <strong>kódban</strong> kell érvényesíteni (<code>Contains</code> + kivétel).</li>
+      </ul>
+
+      <h2 class="sub-title">A fájlbeolvasásnál</h2>
+      <ul class="bullets">
+        <li><code>Split</code> mindig <code>StringSplitOptions.RemoveEmptyEntries</code> opcióval, ha tabulátor és szóköz vegyesen szeparál.</li>
+        <li>A <code>ReadLine()</code> visszaadhat <code>null</code>-t a fájl végén – ne hivatkozz utána tagra.</li>
+        <li>A számokat <code>int.Parse</code> dobja, ha rossz formátumú – ZH-ban feltehetjük, hogy jó, de érdemes elgondolkodni rajta.</li>
+        <li>A vizsga / kurzus / hallgató objektumokat <strong>azonnal kösd be</strong> a szülő gyűjteményébe – ne hagyd lebegve.</li>
+      </ul>
+
+      <h2 class="sub-title">Általános higiénia</h2>
+      <ul class="bullets">
+        <li>Egy <code>.cs</code> fájl, egy osztály (vagy logikailag egy egység). Ha külön fájlokat akarsz, ügyelj a <code>namespace</code>-re.</li>
+        <li>A <code>Main</code> minél rövidebb: beolvasás → kérdések → kiírás. A munkát az osztályok metódusai végzik.</li>
+        <li>Nullable referenciatípusoknál (<code>string?</code>) vagy kapcsold ki a <code>nullable</code>-t a csproj-ben, vagy figyelj a figyelmeztetésekre.</li>
+        <li>Tesztelj <strong>üres</strong> és <strong>egyelemes</strong> bemenetre is – a maximumkeresés és az összegzés ott szokott hibázni.</li>
+      </ul>
+
+      <h2 class="sub-title">Záró sablon – egy minimális <code>Program.cs</code></h2>
+      <div class="code-wrap"><button class="copy-btn">másol</button><pre><code><span class="tok-kw">using</span> System;
+<span class="tok-kw">using</span> System.Collections.Generic;
+<span class="tok-kw">using</span> System.IO;
+
+<span class="tok-kw">namespace</span> ZH {
+    <span class="tok-kw">public class</span> <span class="tok-typ">Program</span> {
+        <span class="tok-kw">public static void</span> <span class="tok-fn">Main</span>() {
+            <span class="tok-kw">try</span> {
+                <span class="tok-kw">using var</span> sr = <span class="tok-kw">new</span> <span class="tok-typ">StreamReader</span>(<span class="tok-str">"input.txt"</span>);
+                <span class="tok-com">// 1. Beolvasás → objektumháló felépítése</span>
+                <span class="tok-com">// 2. Kérdéses elem kikeresése</span>
+                <span class="tok-com">// 3. Kérdések megválaszolása + kiírás</span>
+            } <span class="tok-kw">catch</span> (<span class="tok-typ">FileNotFoundException</span>) {
+                <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">"Nincs input fájl."</span>);
+            } <span class="tok-kw">catch</span> (<span class="tok-typ">Exception</span> e) {
+                <span class="tok-typ">Console</span>.<span class="tok-fn">WriteLine</span>(<span class="tok-str">$"Hiba: {e.Message}"</span>);
+            }
+        }
+    }
+}</code></pre></div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // ----- Téma kapcsoló -----
+  const root  = document.body;
+  const btn   = document.getElementById('themeToggle');
+  const icon  = document.getElementById('themeIcon');
+  const saved = localStorage.getItem('oep-theme');
+  if (saved === 'dark') { root.dataset.theme = 'dark'; icon.textContent = '☀'; }
+  btn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    icon.textContent = next === 'dark' ? '☀' : '☾';
+    try { localStorage.setItem('oep-theme', next); } catch (_) {}
+  });
+
+  // ----- Kód-másoló gombok -----
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const pre = btn.parentElement.querySelector('pre');
+      const txt = pre.innerText;
+      try {
+        await navigator.clipboard.writeText(txt);
+        const orig = btn.textContent;
+        btn.textContent = '✓ kész';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 1400);
+      } catch (e) {
+        btn.textContent = '✗ hiba';
+      }
+    });
+  });
+</script>
+</body>
+</html>

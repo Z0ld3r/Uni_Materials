@@ -1,0 +1,258 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\goldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\goldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\jewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\jewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\gemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\gemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\workshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\workshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\sapphire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\sapphire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\test\\testworkshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\test\\testworkshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\test\\testgemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\test\\testgemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\test\\testgoldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\test\\testgoldsmith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\test\\testjewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\test\\testjewelry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\gemcut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\gemcut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\diamond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\diamond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\emerald.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\emerald.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|m:\\uni\\masodik_felev\\oep\\zh\\goldsmith\\goldsmith3base\\goldsmith\\ruby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5CA27F-5D03-438B-A5BB-9EB4647DCFC7}|Goldsmith\\Goldsmith.csproj|solutionrelative:goldsmith\\ruby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TestWorkshop.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestWorkshop.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Test\\TestWorkshop.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestWorkshop.cs",
+              "RelativeToolTip": "Goldsmith\\Test\\TestWorkshop.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAADwvz8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:30:43.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TestJewelry.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestJewelry.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Test\\TestJewelry.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestJewelry.cs",
+              "RelativeToolTip": "Goldsmith\\Test\\TestJewelry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:29:27.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TestGoldsmith.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestGoldsmith.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Test\\TestGoldsmith.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestGoldsmith.cs",
+              "RelativeToolTip": "Goldsmith\\Test\\TestGoldsmith.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAADwvysAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:24:07.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TestGemstone.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestGemstone.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Test\\TestGemstone.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Test\\TestGemstone.cs",
+              "RelativeToolTip": "Goldsmith\\Test\\TestGemstone.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAywBoAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:24:25.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Program.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Program.cs",
+              "RelativeToolTip": "Goldsmith\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:22:30.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Workshop.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Workshop.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Workshop.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Workshop.cs",
+              "RelativeToolTip": "Goldsmith\\Workshop.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAA9wBYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:21:52.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sapphire.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Sapphire.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Sapphire.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Sapphire.cs",
+              "RelativeToolTip": "Goldsmith\\Sapphire.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:21:43.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Ruby.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Ruby.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Ruby.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Ruby.cs",
+              "RelativeToolTip": "Goldsmith\\Ruby.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:21:30.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Jewelry.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Jewelry.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Jewelry.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Jewelry.cs",
+              "RelativeToolTip": "Goldsmith\\Jewelry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:21:00.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Goldsmith.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Goldsmith.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Goldsmith.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Goldsmith.cs",
+              "RelativeToolTip": "Goldsmith\\Goldsmith.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:20:27.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GemCut.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\GemCut.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\GemCut.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\GemCut.cs",
+              "RelativeToolTip": "Goldsmith\\GemCut.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:20:16.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Emerald.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Emerald.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Emerald.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Emerald.cs",
+              "RelativeToolTip": "Goldsmith\\Emerald.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:20:07.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Diamond.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Diamond.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Diamond.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Diamond.cs",
+              "RelativeToolTip": "Goldsmith\\Diamond.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:19:53.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gemstone.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Gemstone.cs",
+              "RelativeDocumentMoniker": "Goldsmith\\Gemstone.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\zh\\Goldsmith\\Goldsmith3Base\\Goldsmith\\Gemstone.cs",
+              "RelativeToolTip": "Goldsmith\\Gemstone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T18:10:42.683Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

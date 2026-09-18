@@ -1,0 +1,8 @@
+4 3
+kicsik l 86
+picik l 90
+szaporak n 26
+szorgosak s 12
+ehesek j 12
+tollasak h 6
+nyamnyamnyam j 50

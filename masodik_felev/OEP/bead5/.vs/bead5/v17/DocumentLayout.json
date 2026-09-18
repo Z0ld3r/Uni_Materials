@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\bead5\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|m:\\uni\\masodik_felev\\oep\\bead5\\bead5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|solutionrelative:bead5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|m:\\uni\\masodik_felev\\oep\\bead5\\bead5\\textfilereader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|solutionrelative:bead5\\textfilereader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|m:\\uni\\masodik_felev\\oep\\bead5\\bead5\\input.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|solutionrelative:bead5\\input.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|m:\\uni\\masodik_felev\\oep\\bead5\\bead5\\bead5.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8BBA4E7D-4A36-4F52-9ADF-26AAF092D9B8}|bead5\\bead5.csproj|solutionrelative:bead5\\bead5.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "bead5.csproj",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\bead5.csproj",
+              "RelativeDocumentMoniker": "bead5\\bead5.csproj",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\bead5.csproj",
+              "RelativeToolTip": "bead5\\bead5.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-12T10:37:29.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "input.txt",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\input.txt",
+              "RelativeDocumentMoniker": "bead5\\input.txt",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\input.txt",
+              "RelativeToolTip": "bead5\\input.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-03-12T10:12:05.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TextFileReader.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\TextFileReader.cs",
+              "RelativeDocumentMoniker": "bead5\\TextFileReader.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\TextFileReader.cs",
+              "RelativeToolTip": "bead5\\TextFileReader.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T10:03:12.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\Program.cs",
+              "RelativeDocumentMoniker": "bead5\\Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\bead5\\bead5\\Program.cs",
+              "RelativeToolTip": "bead5\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T09:43:25.622Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

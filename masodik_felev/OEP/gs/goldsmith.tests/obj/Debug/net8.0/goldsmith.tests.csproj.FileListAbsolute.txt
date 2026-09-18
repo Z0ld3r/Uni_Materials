@@ -1,0 +1,11 @@
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_goldsmith.tests
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\bin\Debug\net8.0\.msCoverageExtensionSourceRootsMapping_goldsmith.tests
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.csproj.AssemblyReference.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.GeneratedMSBuildEditorConfig.editorconfig
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.AssemblyInfoInputs.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.AssemblyInfo.cs
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.csproj.CoreCompileInputs.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.gentestingplatformentrypointinputcache.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\goldsmith.tests.genautoregisteredextensionsinputcache.cache
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\AutoRegisteredExtensions.cs
+M:\uni\masodik_felev\OEP\goldsmith\goldsmith.tests\obj\Debug\net8.0\TestPlatformEntryPoint.cs

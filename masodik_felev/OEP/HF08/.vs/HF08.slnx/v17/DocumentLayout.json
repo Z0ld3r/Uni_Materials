@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "M:\\uni\\masodik_felev\\OEP\\HF08\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54881E22-1F9F-EDA8-F7AD-7F71C8C2CB34}|HF08\\HF08.csproj|m:\\uni\\masodik_felev\\oep\\hf08\\hf08\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54881E22-1F9F-EDA8-F7AD-7F71C8C2CB34}|HF08\\HF08.csproj|solutionrelative:hf08\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\uni\\masodik_felev\\OEP\\HF08\\HF08\\Program.cs",
+              "RelativeDocumentMoniker": "HF08\\Program.cs",
+              "ToolTip": "M:\\uni\\masodik_felev\\OEP\\HF08\\HF08\\Program.cs",
+              "RelativeToolTip": "HF08\\Program.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAADgvzgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T07:22:56.032Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
